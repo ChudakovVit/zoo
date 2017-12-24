@@ -33,7 +33,7 @@ public class MenuController extends ViewController {
 
     @FXML
     protected void showAnimalPersonnel(ActionEvent event) {
-//        GuiLauncher.getNavigation().load(ShowTeacherBySurnameManager.URL_FXML).show();
+        GuiLauncher.getNavigation().load(ShowAnimalPersonnel.URL_FXML).show();
     }
 
     @FXML

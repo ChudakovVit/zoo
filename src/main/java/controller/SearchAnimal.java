@@ -14,8 +14,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 
@@ -40,28 +42,31 @@ public class SearchAnimal extends ViewController {
     @FXML
     protected void search(ActionEvent event) {
         try {
-            String animalName = inputField.getText();
-            if (!animalName.isEmpty()) {
+            String name = inputField.getText();
+            if (!name.isEmpty()) {
+                inputLabel.setText(name);
                 session.getTransaction().begin();
-                Query query = session.createQuery("select description, kind from Animal where description = :name ");
-                query.setParameter("name", animalName);
-                List<Animal> list = query.list();
+                CriteriaBuilder builder = session.getCriteriaBuilder();
+                CriteriaQuery<Animal> criteriaQuery = builder.createQuery(Animal.class);
+                Root<Animal> root = criteriaQuery.from(Animal.class);
+                criteriaQuery.select(root);
+                criteriaQuery.where(builder.like(root.get("description"), "%"+name+"%"));
+                List list = session.createQuery(criteriaQuery).getResultList();
                 ObservableList<Animal> data = FXCollections.observableArrayList(list);
                 nameColumn.setCellValueFactory(new PropertyValueFactory<Animal, String>("description"));
                 kindColumn.setCellValueFactory(new PropertyValueFactory<Animal, String>("kind"));
-//                feedColumn.setCellValueFactory();
                 mainTable.setItems(data);
-                inputLabel.setText("INFO: OK!");
-                session.getTransaction().commit();
-
+                inputLabel.setText("All right!");
             } else {
-                inputLabel.setText("ERROR: Empty input!");
+                inputLabel.setText("Empty input!");
             }
         } catch(Exception e) {
-            inputLabel.setText("ERROR! " + e.getMessage());
-            session.getTransaction().rollback();
+            inputLabel.setText("Error: " +e.getMessage());
+        } finally {
+            session.getTransaction().commit();
         }
     }
+
 
     @FXML
     protected void goBack(ActionEvent event) {

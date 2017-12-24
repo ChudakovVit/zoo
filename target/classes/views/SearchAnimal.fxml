@@ -24,15 +24,15 @@
                </font></Button>
             <TableView fx:id="mainTable" layoutX="73.0" layoutY="189.0" prefHeight="498.0" prefWidth="686.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="41.0">
                <columns>
-                  <TableColumn fx:id="departmentColumn" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="176.79998779296875" text="Название" />
-                  <TableColumn fx:id="specialityColumn" maxWidth="570.4000396728516" minWidth="-Infinity" prefWidth="151.1999969482422" text="Род" />
-                  <TableColumn fx:id="departmentColumn1" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="176.79998779296875" text="Корм" />
+                  <TableColumn fx:id="nameColumn" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="176.79998779296875" text="Название" />
+                  <TableColumn fx:id="kindColumn" maxWidth="570.4000396728516" minWidth="-Infinity" prefWidth="151.1999969482422" text="Род" />
+                  <TableColumn fx:id="feedColumn" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="176.79998779296875" text="Корм" />
                </columns>
             </TableView>
             <TextField fx:id="inputField" layoutX="73.0" layoutY="127.0" prefHeight="35.0" prefWidth="510.0" AnchorPane.rightAnchor="216.0" />
-            <Label fx:id="inputLabel" alignment="CENTER" layoutX="74.0" layoutY="675.0" prefHeight="22.0" prefWidth="880.0" style="&#10;" textAlignment="CENTER" textFill="RED" wrapText="false" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="66.0">
+            <Label fx:id="inputLabel" alignment="CENTER" layoutX="73.0" layoutY="705.0" prefHeight="45.0" prefWidth="522.0" style="&#10;" wrapText="false" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="205.0">
                <font>
-                  <Font size="15.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Button fx:id="goBackButton" layoutX="630.0" layoutY="705.0" mnemonicParsing="false" onAction="#goBack" prefHeight="27.0" prefWidth="126.0" text="Назад" AnchorPane.leftAnchor="630.0" AnchorPane.rightAnchor="44.0">

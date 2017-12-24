@@ -29,9 +29,9 @@
                </columns>
             </TableView>
             <TextField fx:id="inputField" layoutX="73.0" layoutY="127.0" prefHeight="35.0" prefWidth="510.0" AnchorPane.rightAnchor="216.0" />
-            <Label fx:id="inputLabel" alignment="CENTER" layoutX="74.0" layoutY="675.0" prefHeight="22.0" prefWidth="880.0" style="&#10;" textAlignment="CENTER" textFill="RED" wrapText="false" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="66.0">
+            <Label fx:id="inputLabel" alignment="CENTER" layoutX="72.0" layoutY="705.0" prefHeight="45.0" prefWidth="526.0" style="&#10;" wrapText="false" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="202.0">
                <font>
-                  <Font size="15.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Button fx:id="goBackButton" layoutX="630.0" layoutY="705.0" mnemonicParsing="false" onAction="#goBack" prefHeight="27.0" prefWidth="126.0" text="Назад" AnchorPane.leftAnchor="630.0" AnchorPane.rightAnchor="44.0">

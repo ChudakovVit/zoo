@@ -13,21 +13,29 @@ public class Animal {
     @GenericGenerator(name="kaugen" , strategy="increment")
     @GeneratedValue(generator="kaugen")
     private Integer animal;
-    @Column
-    private Integer feed_id;
-    @Column
-    private Integer home_id;
+    @Column(name = "feed_id")
+    private Integer feedId;
+    @Column(name = "home_id")
+    private Integer homeId;
     @Column
     private String kind;
     @Column
     private String description;
+
+    public Animal() {
+    }
 
     public Animal(String kind, String description) {
         this.kind = kind;
         this.description = description;
     }
 
-    public Animal() {
+    public Animal(Integer animal, Integer feedId, Integer homeId, String kind, String description) {
+        this.animal = animal;
+        this.feedId = feedId;
+        this.homeId = homeId;
+        this.kind = kind;
+        this.description = description;
     }
 
     public Integer getAnimal() {
@@ -38,20 +46,20 @@ public class Animal {
         this.animal = animal;
     }
 
-    public Integer getFeed_id() {
-        return feed_id;
+    public Integer getFeedId() {
+        return feedId;
     }
 
-    public void setFeed_id(Integer feed_id) {
-        this.feed_id = feed_id;
+    public void setFeedId(Integer feedId) {
+        this.feedId = feedId;
     }
 
-    public Integer getHome_id() {
-        return home_id;
+    public Integer getHomeId() {
+        return homeId;
     }
 
-    public void setHome_id(Integer home_id) {
-        this.home_id = home_id;
+    public void setHomeId(Integer homeId) {
+        this.homeId = homeId;
     }
 
     public String getKind() {
@@ -72,6 +80,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal: ID=" + animal + ", Kind='" + kind + "', Description='" + description + "';";
+        return "Животное №" + animal + ": '" + description + "'";
     }
 }

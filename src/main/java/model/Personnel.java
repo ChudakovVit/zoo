@@ -11,51 +11,46 @@ import javax.persistence.*;
 public class Personnel {
     @Id
     private Integer personnel;
-    @Column
-    private String full_name;
-    @Column
-    private String phone_number;
+    @Column(name = "full_name")
+    private String fullName;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     public Personnel() {
     }
 
-    public Personnel(String full_name, String phone_number) {
-        this.full_name = full_name;
-        this.phone_number = phone_number;
-    }
-
-    public Personnel(Integer personnel, String full_name, String phone_number) {
+    public Personnel(Integer personnel, String fullName, String phoneNumber) {
         this.personnel = personnel;
-        this.full_name = full_name;
-        this.phone_number = phone_number;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
     }
 
-    public int getPersonnelId() {
+    public Integer getPersonnel() {
         return personnel;
     }
 
-    public void setPersonnelId(Integer personnelId) {
-        this.personnel = personnelId;
+    public void setPersonnel(Integer personnel) {
+        this.personnel = personnel;
     }
 
-    public String getName() {
-        return full_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String fullName) {
-        this.full_name = fullName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhoneNumber() {
-        return phone_number;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phone_number = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
     public String toString() {
-        return "Employee: Full Name='" + full_name + "', Phone Number='" + phone_number + "'; ";
+        return "Employee: Full Name='" + fullName + "', Phone Number='" + phoneNumber + "'; ";
     }
 }

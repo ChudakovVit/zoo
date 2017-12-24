@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.scenario.effect.impl.prism.PrTexture;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,14 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import org.hibernate.Session;
 import javafx.scene.control.TextField;
-import org.hibernate.query.Query;
 import javafx.scene.control.TableView;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.ParameterExpression;
-import javax.persistence.criteria.Root;
-import java.util.ArrayList;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 
@@ -49,38 +42,22 @@ public class SearchPersonnel extends ViewController {
             if (!fullName.isEmpty()) {
                 inputLabel.setText(fullName);
                 session.getTransaction().begin();
-                Query query = session.createQuery("SELECT full_name, phone_number FROM Personnel p");
-//                query.setParameter("name", "%Иванов%");
-//                WHERE p.full_name LIKE :name
-
-
-//                CriteriaBuilder cb = session.getCriteriaBuilder();
-//                CriteriaQuery<Personnel> q = cb.createQuery(Personnel.class);
-//                Root<Personnel> c = q.from(Personnel.class);
-//                ParameterExpression<String> p = cb.parameter(String.class);
-//                q.select(c).where(cb.gt(c.get("phone_number"), p));
-
-                List pers = new ArrayList<Personnel>();
                 CriteriaBuilder builder = session.getCriteriaBuilder();
                 CriteriaQuery<Personnel> criteriaQuery = builder.createQuery(Personnel.class);
                 Root<Personnel> root = criteriaQuery.from(Personnel.class);
-                ParameterExpression<String> p = builder.parameter(String.class);
                 criteriaQuery.select(root);
-                pers = session.createQuery(criteriaQuery).getResultList();
-
-
-
-                List<Personnel> list = query.list();
+                criteriaQuery.where(builder.like(root.get("fullName"), "%"+fullName+"%"));
+                List list = session.createQuery(criteriaQuery).getResultList();
                 ObservableList<Personnel> data = FXCollections.observableArrayList(list);
-                fullNameColumn.setCellValueFactory(new PropertyValueFactory<Personnel, String>("full_name"));
-                phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<Personnel, String>("phone_number"));
+                fullNameColumn.setCellValueFactory(new PropertyValueFactory<Personnel, String>("fullName"));
+                phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<Personnel, String>("phoneNumber"));
                 mainTable.setItems(data);
-                inputLabel.setText("INFO: vOK!");
+                inputLabel.setText("All right!");
             } else {
-                inputLabel.setText("ERROR: Empty input!");
+                inputLabel.setText("Empty input!");
             }
         } catch(Exception e) {
-            inputLabel.setText("ERROR! " +e.getMessage());
+            inputLabel.setText("Error: " +e.getMessage());
         } finally {
             session.getTransaction().commit();
         }
