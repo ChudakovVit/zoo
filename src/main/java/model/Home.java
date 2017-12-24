@@ -4,13 +4,6 @@ package model;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
-/*
-o	@home – PK, AI, уникальный номер «дома» животного
-o	average_temp – средняя температура в домашних условиях
-o	average_humidity – средняя влажность в домашних условиях
-o	description – описание информации о среде (может включать название стран)
-
- */
 @Entity
 @Table(name = "Home")
 public class Home {

@@ -21,7 +21,6 @@
         <mapping class="model.Personnel"/>
         <mapping class="model.Feed"/>
         <mapping class="model.Home"/>
-        <mapping class="model.AnimalPersonnel"/>
 
     </session-factory>
 </hibernate-configuration>

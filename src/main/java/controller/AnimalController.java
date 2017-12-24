@@ -43,7 +43,7 @@ public class AnimalController extends ViewController {
             String feed = feedField.getText();
             Integer feedQuantity = Integer.parseInt(feedQuantityField.getText());
             if (!(kind.isEmpty() && name.isEmpty())) {
-//                session.getTransaction().begin();
+                session.getTransaction().begin();
 //                Query query = session.createQuery("from Feed where name = :name ");
 //                query.setParameter("name", department);
 //                List<Feed> list = query.list();
