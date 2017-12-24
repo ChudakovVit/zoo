@@ -43,15 +43,12 @@ public class SearchAnimal extends ViewController {
             String animalName = inputField.getText();
             if (!animalName.isEmpty()) {
                 session.getTransaction().begin();
-                Query query = session.createQuery("select a from animal where description = :name ");
+                Query query = session.createQuery("select description, kind from Animal where description = :name ");
                 query.setParameter("name", animalName);
                 List<Animal> list = query.list();
-                ObservableList<Animal> data =
-                        FXCollections.observableArrayList(list);
-                nameColumn.setCellValueFactory(
-                        new PropertyValueFactory<Animal, String>("description"));
-                kindColumn.setCellValueFactory(
-                        new PropertyValueFactory<Animal, String>("kind"));
+                ObservableList<Animal> data = FXCollections.observableArrayList(list);
+                nameColumn.setCellValueFactory(new PropertyValueFactory<Animal, String>("description"));
+                kindColumn.setCellValueFactory(new PropertyValueFactory<Animal, String>("kind"));
 //                feedColumn.setCellValueFactory();
                 mainTable.setItems(data);
                 inputLabel.setText("INFO: OK!");

@@ -159,5 +159,6 @@ public class AnimalController extends ViewController {
     @FXML
     protected void goBack(ActionEvent event) {
         GuiLauncher.getNavigation().load(MenuController.URL_FXML).show();
+        session.close();
     }
 }

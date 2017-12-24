@@ -28,7 +28,7 @@ public class MenuController extends ViewController {
 
     @FXML
     protected void searchPersonnel(ActionEvent event) {
-//        GuiLauncher.getNavigation().load(ShowAdministratorManager.URL_FXML).show();
+        GuiLauncher.getNavigation().load(SearchPersonnel.URL_FXML).show();
     }
 
     @FXML

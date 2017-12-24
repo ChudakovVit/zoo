@@ -16,6 +16,20 @@ public class Personnel {
     @Column
     private String phone_number;
 
+    public Personnel() {
+    }
+
+    public Personnel(String full_name, String phone_number) {
+        this.full_name = full_name;
+        this.phone_number = phone_number;
+    }
+
+    public Personnel(Integer personnel, String full_name, String phone_number) {
+        this.personnel = personnel;
+        this.full_name = full_name;
+        this.phone_number = phone_number;
+    }
+
     public int getPersonnelId() {
         return personnel;
     }

@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchAnimal">
+<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchPersonnel">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="800.0" prefWidth="800.0">
          <children>
-            <Label alignment="CENTER" layoutX="164.0" layoutY="28.0" prefHeight="60.0" prefWidth="466.0" style="&#10;" text="Поиск животных" textAlignment="CENTER" wrapText="false" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="170.0">
+            <Label alignment="CENTER" layoutX="164.0" layoutY="28.0" prefHeight="60.0" prefWidth="466.0" style="&#10;" text="Поиск работника" textAlignment="CENTER" wrapText="false" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="170.0">
                <font>
                   <Font size="48.0" />
                </font>
@@ -24,9 +24,8 @@
                </font></Button>
             <TableView fx:id="mainTable" layoutX="73.0" layoutY="189.0" prefHeight="498.0" prefWidth="686.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="41.0">
                <columns>
-                  <TableColumn fx:id="departmentColumn" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="176.79998779296875" text="Название" />
-                  <TableColumn fx:id="specialityColumn" maxWidth="570.4000396728516" minWidth="-Infinity" prefWidth="151.1999969482422" text="Род" />
-                  <TableColumn fx:id="departmentColumn1" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="176.79998779296875" text="Корм" />
+                  <TableColumn fx:id="fullNameColumn" maxWidth="348.94164276123047" minWidth="-Infinity" prefWidth="340.88692474365234" text="ФИО" />
+                  <TableColumn fx:id="phoneNumberColumn" maxWidth="570.4000396728516" minWidth="-Infinity" prefWidth="342.113037109375" text="Номер телефона" />
                </columns>
             </TableView>
             <TextField fx:id="inputField" layoutX="73.0" layoutY="127.0" prefHeight="35.0" prefWidth="510.0" AnchorPane.rightAnchor="216.0" />
