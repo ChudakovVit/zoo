@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="720.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WorkWithEmployeeManager">
+   <children>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="1020.0">
+         <children>
+            <Label alignment="CENTER" layoutX="306.0" layoutY="57.0" prefHeight="27.0" prefWidth="458.0" style="&#10;" text="WORK WITH ADMINISTRATIVE EMPLOYEES" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.leftAnchor="306.0" AnchorPane.rightAnchor="256.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="addButton" layoutX="312.0" layoutY="356.0" mnemonicParsing="false" onAction="#addEmployee" prefHeight="26.0" prefWidth="450.0" text="ADD" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="257.6" />
+            <TextField fx:id="nameField" layoutX="472.0" layoutY="135.0" prefHeight="26.0" prefWidth="285.0" AnchorPane.rightAnchor="262.4" />
+            <Label alignment="CENTER" layoutX="328.0" layoutY="138.0" style="&#10;" text="NAME:" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.leftAnchor="330.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="infoLabel" alignment="CENTER" layoutX="70.0" layoutY="597.0" prefHeight="22.0" prefWidth="880.0" style="&#10;" textAlignment="CENTER" textFill="RED" wrapText="false" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="deleteButton" layoutX="312.0" layoutY="390.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="26.0" prefWidth="450.0" text="DELETE" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="257.6" />
+            <Button fx:id="editButton" layoutX="312.0" layoutY="426.0" mnemonicParsing="false" onAction="#editEmployee" prefHeight="26.0" prefWidth="450.0" text="EDIT" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="257.6" />
+            <TextField fx:id="surnameField" layoutX="472.0" layoutY="101.0" prefHeight="26.0" prefWidth="286.0" AnchorPane.rightAnchor="261.6" />
+            <Label alignment="CENTER" layoutX="330.0" layoutY="103.0" style="&#10;" text="SURNAME" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.leftAnchor="330.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="312.0" layoutY="322.0" prefHeight="22.0" prefWidth="458.0" style="&#10;" text="IF YOU WANT TO &quot;EDIT&quot; OR &quot;DELETE&quot; ENTER &quot;ID&quot; FIELD" textAlignment="CENTER" textFill="RED" wrapText="false" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="249.60000000000002">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="patronymicField" layoutX="472.0" layoutY="169.0" prefHeight="26.0" prefWidth="285.0" AnchorPane.rightAnchor="262.4" />
+            <Label alignment="CENTER" layoutX="328.0" layoutY="172.0" style="&#10;" text="PATRONYMIC:" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.leftAnchor="328.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="phoneNumberField" layoutX="471.0" layoutY="206.0" prefHeight="26.0" prefWidth="285.0" AnchorPane.rightAnchor="263.4" />
+            <Label alignment="CENTER" layoutX="327.0" layoutY="208.0" style="&#10;" text="PHONE NUMBER:" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.leftAnchor="328.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="facultyField" layoutX="471.0" layoutY="242.0" prefHeight="26.0" prefWidth="285.0" AnchorPane.rightAnchor="263.4" />
+            <Label alignment="CENTER" layoutX="325.0" layoutY="245.0" style="&#10;" text="FACULTY" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.leftAnchor="325.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="showFacultiesButton" layoutX="310.0" layoutY="465.0" mnemonicParsing="false" onAction="#showFaculties" prefHeight="26.0" prefWidth="450.0" text="SHOW AVIABLE FACULTIES" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="259.6" />
+            <Button fx:id="showEmployeesButton" layoutX="310.0" layoutY="508.0" mnemonicParsing="false" onAction="#showEmployees" prefHeight="26.0" prefWidth="450.0" text="SHOW AVIABLE EMPLOYEES" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="259.6" />
+            <TextField fx:id="idField" layoutX="472.0" layoutY="276.0" prefHeight="26.0" prefWidth="285.0" AnchorPane.rightAnchor="262.4" />
+            <Label alignment="CENTER" layoutX="325.0" layoutY="279.0" style="&#10;" text="ID:" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.leftAnchor="325.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="goBackButton" layoutX="310.0" layoutY="553.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="450.0" text="BACK" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="259.6" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

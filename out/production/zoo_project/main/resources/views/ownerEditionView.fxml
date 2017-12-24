@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="198.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OwnerVC">
+    <children>
+        <TextField fx:id="nameTextField" layoutX="68.0" layoutY="60.0" prefHeight="26.0" prefWidth="209.0" AnchorPane.rightAnchor="21.0" />
+        <Label layoutX="19.0" layoutY="60.0" prefHeight="26.0" prefWidth="49.0" text="Name:" AnchorPane.leftAnchor="19.0" />
+        <Label alignment="CENTER" layoutY="14.0" prefHeight="23.0" prefWidth="87.0" text="Owner" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="211.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="acceptButton" layoutX="14.0" layoutY="153.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="Add" />
+        <Button fx:id="cancelButton" layoutX="173.0" layoutY="153.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="Cancel" />
+      <TextField fx:id="certificateTextField" layoutX="68.0" layoutY="95.0" prefHeight="26.0" prefWidth="209.0" />
+      <Label layoutX="19.0" layoutY="95.0" prefHeight="26.0" prefWidth="49.0" text="Cert:" />
+    </children>
+</AnchorPane>
