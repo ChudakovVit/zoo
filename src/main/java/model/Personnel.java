@@ -10,8 +10,6 @@ import javax.persistence.*;
 @Table(name = "Personnel")
 public class Personnel {
     @Id
-    @GenericGenerator(name="kaugen" , strategy="increment")
-    @GeneratedValue(generator="kaugen")
     private Integer personnel;
     @Column
     private String full_name;

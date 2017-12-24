@@ -6,22 +6,39 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="460.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
+<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="458.0" prefWidth="1020.0">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="800.0" prefWidth="800.0">
       <children>
-        <Label alignment="CENTER" layoutX="384.0" layoutY="60.0" style="&#10;" text="ZOOPARK" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.leftAnchor="384.0" AnchorPane.rightAnchor="386.4">
+        <Label alignment="CENTER" layoutX="201.0" layoutY="98.0" prefHeight="79.0" prefWidth="399.0" style="&#10;" text="ЗООПАРК" textAlignment="CENTER" wrapText="false" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="200.0">
           <font>
-            <Font size="36.0" />
+            <Font size="64.0" />
           </font>
         </Label>
-            <!--<Button fx:id="showTeachersButton" layoutX="175.0" layoutY="139.0" mnemonicParsing="false" onAction="#showTeachers" text="ANIMALS AND EMPLOYEES" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="617.8" />-->
-            <!--<Button fx:id="showSpecialtiesButton" layoutX="617.0" layoutY="139.0" mnemonicParsing="false" onAction="#showSpecialties" text="SHOW SPECIALTIES" AnchorPane.leftAnchor="617.0" AnchorPane.rightAnchor="175.79999999999995" />-->
-            <!--<Button fx:id="showAdmnistratorsButton" layoutX="175.0" layoutY="210.0" mnemonicParsing="false" onAction="#showAdministrators" prefWidth="180.0" text="SHOW ADMINISTRATIVE EMPLOYEES" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="617.8" />-->
-            <!--<Button fx:id="showTeachersBySurnameButton" layoutX="617.0" layoutY="210.0" mnemonicParsing="false" onAction="#showTeachersBySurname" text="SHOW TEACHERS BY SURNAME" AnchorPane.leftAnchor="617.0" AnchorPane.rightAnchor="175.79999999999995" />-->
-            <Button fx:id="animalsManageButton" layoutX="175.0" layoutY="287.0" mnemonicParsing="false" onAction="#animalsManage" text="ANIMALS" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="617.8" />
-            <!--<Button fx:id="animalsManageButton" layoutX="617.0" layoutY="287.0" mnemonicParsing="false" onAction="#animalsManage" text="PERSONNEL" AnchorPane.leftAnchor="617.0" AnchorPane.rightAnchor="175.79999999999995" />-->
-            <Button fx:id="exitButton" layoutX="174.0" layoutY="360.0" mnemonicParsing="false" onAction="#exit" prefHeight="27.0" prefWidth="671.0" text="EXIT" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="175.0" />
+            <Button fx:id="employeeManageButton" layoutX="410.0" layoutY="281.0" mnemonicParsing="false" onAction="#employeeManage" prefHeight="68.0" prefWidth="323.0" text="Управление работниками" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="67.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="searchPersonnelButton" layoutX="410.0" layoutY="423.0" mnemonicParsing="false" onAction="#searchPersonnel" prefHeight="68.0" prefWidth="323.0" text="Поиск работников" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="67.0">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <Button fx:id="showAnimalPersonnelButton" layoutX="54.0" layoutY="554.0" mnemonicParsing="false" onAction="#showAnimalPersonnel" prefHeight="68.0" prefWidth="679.0" text="Посмотреть сотрудников и животных" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="67.0">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <Button fx:id="animalManageButton" layoutX="54.0" layoutY="281.0" mnemonicParsing="false" onAction="#animalManage" prefHeight="68.0" prefWidth="323.0" text="Управление животными" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="423.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="searchAnimalButton" layoutX="54.0" layoutY="423.0" mnemonicParsing="false" onAction="#searchAnimal" prefHeight="68.0" prefWidth="323.0" text="Поиск животных" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="423.0">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <Button fx:id="exitButton" layoutX="607.0" layoutY="702.0" mnemonicParsing="false" onAction="#exit" prefHeight="51.0" prefWidth="126.0" text="Выход" AnchorPane.leftAnchor="607.0" AnchorPane.rightAnchor="67.0">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
       </children>
     </AnchorPane>
   </children>

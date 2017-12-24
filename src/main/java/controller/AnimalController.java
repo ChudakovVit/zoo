@@ -1,6 +1,6 @@
 package controller;
 
-import utils.Hibernate;
+import utils.HibernateUtil;
 import gui.GuiLauncher;
 import gui.ViewController;
 import javafx.event.ActionEvent;
@@ -19,7 +19,7 @@ public class AnimalController extends ViewController {
 
     public static String URL_FXML = "/views/AnimalManage.fxml";
 
-    private Session session = Hibernate.getSessionFactory().openSession();
+    private Session session = HibernateUtil.getSessionFactory().openSession();
     @FXML
     TextField nameField;
     @FXML
@@ -52,13 +52,13 @@ public class AnimalController extends ViewController {
 //                    session.getTransaction().commit();
 //                    return;
 //                }
-                Animal Animal = new Animal();
-                Animal.setKind(kind);
-                Animal.setDescription(name);
+                Animal animal = new Animal();
+                animal.setKind(kind);
+                animal.setDescription(name);
 //                Animal.setPatronymic(patronymic);
 //                Animal.setDepartment_iddepartment(list.get(0).getIdDepartment());
 //                Animal.setPhoneNumber(phoneNumber);
-                session.save(Animal);
+                session.save(animal);
                 session.getTransaction().commit();
                 infoLabel.setText("INFO: OK!");
             } else {
@@ -127,10 +127,12 @@ public class AnimalController extends ViewController {
 //            infoLabel.setText("ERROR! " + e.getMessage());
 //            session.getTransaction().rollback();
 //        }
+        System.out.println("asdf");
     }
 
     @FXML
     protected void showDepartments(ActionEvent event) {
+        System.out.println("24iy3");
 //        session.getTransaction().begin();
 //        Query query = session.createQuery("from Department");
 //        List<Department> list = query.list();

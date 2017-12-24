@@ -10,8 +10,6 @@ import javax.persistence.*;
 @Table(name = "Animal")
 public class Animal {
     @Id
-    @GenericGenerator(name="kaugen" , strategy="increment")
-    @GeneratedValue(generator="kaugen")
     private Integer animal;
     @Column
     private Integer feed_id;

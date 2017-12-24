@@ -7,7 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
 
-public class Hibernate {
+public class HibernateUtil {
     private static final SessionFactory sessionFactory;
     private static final Configuration configuration;
 
@@ -18,8 +18,7 @@ public class Hibernate {
                                                .addAnnotatedClass(Feed.class)
                                                .addAnnotatedClass(Home.class)
                                                .addAnnotatedClass(Personnel.class)
-                                               .configure();
-            configuration.configure("hibernate/hibernate.cfg.xml");
+                                               .configure("views/hibernate.cfg.xml");
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 

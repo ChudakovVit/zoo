@@ -18,8 +18,8 @@ public class Navigation {
         this.stage = stage;
         scene = new Scene(new Pane());
         stage.setScene(scene);
-        stage.setMinWidth(1400);
-        stage.setMinHeight(850);
+        stage.setMinWidth(800);
+        stage.setMinHeight(800);
     }
 
     public ViewController load (String urlString) {

@@ -10,41 +10,30 @@ import javafx.fxml.FXML;
 public class MenuController extends ViewController {
 
     public static String URL_FXML = "/views/MenuManager.fxml";
-//
-//    @FXML
-//    protected void showTeachers(ActionEvent event) {
-//
-//        GuiLauncher.getNavigation().load(ShowTeacherManager.URL_FXML).show();
-//    }
-//
-//    @FXML
-//    protected void showSpecialties(ActionEvent event) {
-//        GuiLauncher.getNavigation().load(ShowSpecialtiesManager.URL_FXML).show();
-//    }
-//
-//    @FXML
-//    protected void showAdministrators(ActionEvent event) {
-//        GuiLauncher.getNavigation().load(ShowAdministratorManager.URL_FXML).show();
-//    }
-//
-//    @FXML
-//    protected void showTeachersBySurname(ActionEvent event) {
-//        GuiLauncher.getNavigation().load(ShowTeacherBySurnameManager.URL_FXML).show();
-//    }
-//
-//    @FXML
-//    protected void workWithCourses(ActionEvent event) {
-//        GuiLauncher.getNavigation().load(WorkWithCourseManager.URL_FXML).show();
-//    }
-//
-//    @FXML
-//    protected void workWithEmployees(ActionEvent event) {
-//        GuiLauncher.getNavigation().load(WorkWithEmployeeManager.URL_FXML).show();
-//    }
 
     @FXML
-    protected void animalsManage(ActionEvent event) {
+    protected void employeeManage(ActionEvent event) {
+//        GuiLauncher.getNavigation().load(ShowTeacherManager.URL_FXML).show();
+    }
+
+    @FXML
+    protected void animalManage(ActionEvent event) {
         GuiLauncher.getNavigation().load(AnimalController.URL_FXML).show();
+    }
+
+    @FXML
+    protected void searchAnimal(ActionEvent event) {
+        GuiLauncher.getNavigation().load(SearchAnimal.URL_FXML).show();
+    }
+
+    @FXML
+    protected void searchPersonnel(ActionEvent event) {
+//        GuiLauncher.getNavigation().load(ShowAdministratorManager.URL_FXML).show();
+    }
+
+    @FXML
+    protected void showAnimalPersonnel(ActionEvent event) {
+//        GuiLauncher.getNavigation().load(ShowTeacherBySurnameManager.URL_FXML).show();
     }
 
     @FXML
