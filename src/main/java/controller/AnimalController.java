@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import org.hibernate.Session;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
@@ -80,7 +81,6 @@ public class AnimalController extends ViewController {
 
                 if (!list.isEmpty()) {
                     infoLabel.setText("Already exist!");
-                    session.getTransaction().commit();
                     return;
                 }
                 Animal animal = new Animal(id, id, id, kind, name);
@@ -95,7 +95,6 @@ public class AnimalController extends ViewController {
                 AnimalPersonnel animalPersonnel = new AnimalPersonnel(id+idPersonnel, id, idPersonnel);
                 session.save(animalPersonnel);
 
-                session.getTransaction().commit();
                 infoLabel.setText("All right!");
             } else {
                 infoLabel.setText("Wrong input!");
@@ -103,17 +102,23 @@ public class AnimalController extends ViewController {
         } catch(Exception e) {
             infoLabel.setText("Error: " + e.getMessage());
             session.getTransaction().rollback();
+        } finally {
+            session.getTransaction().commit();
         }
     }
 
     @FXML
     protected void deleteAnimal(ActionEvent event) {
         try {
-            String id = idField.getText();
-            if (!id.isEmpty()) {
-                int idAnimal = Integer.parseInt(id);
+            Integer id;
+            try {
+                id = Integer.parseInt(idField.getText());
+            } catch (Exception e) {
+                id = -1;
+            }
+            if (id != -1) {
                 session.getTransaction().begin();
-                session.delete(session.get(Animal.class, idAnimal));
+                session.delete(session.get(Animal.class, id));
                 session.getTransaction().commit();
                 infoLabel.setText("All right!");
             } else {
@@ -127,43 +132,31 @@ public class AnimalController extends ViewController {
 
     @FXML
     protected void editAnimal(ActionEvent event) {
-//        try {
-//            String surname = surnameField.getText();
-//            String name = nameField.getText();
-//            String patronymic = patronymicField.getText();
-//            String phoneNumber = phoneNumberField.getText();
-//            String department = departmentField.getText();
-//            String id = idField.getText();
-//            if (!(name.isEmpty() && surname.isEmpty() && patronymic.isEmpty() && department.isEmpty() && id.isEmpty())) {
-//                int id_Animal = Integer.parseInt(id);
-//                session.getTransaction().begin();
-//                // проверка по кафедре
-//                // проверка по ид
-//                Query query = session.createQuery("from Department where name = :name ");
-//                query.setParameter("name", department);
-//                List<Department> list = query.list();
-//                if (list.isEmpty()) {
-//                    infoLabel.setText("INFO: Not Found!");
-//                    session.getTransaction().commit();
-//                    return;
-//                }
-//                Animal Animal = new Animal();
-//                Animal.setSurname(surname);
-//                Animal.setName(name);
-//                Animal.setPatronymic(patronymic);
-//                Animal.setDepartment_iddepartment(list.get(0).getIdDepartment());
-//                Animal.setPhoneNumber(phoneNumber);
-//                session.save(Animal);
-//                session.getTransaction().commit();
-//                infoLabel.setText("INFO: OK!");
-//            } else {
-//                infoLabel.setText("ERROR: Empty input!");
-//            }
-//        } catch(Exception e) {
-//            infoLabel.setText("ERROR! " + e.getMessage());
-//            session.getTransaction().rollback();
-//        }
-        System.out.println("asdf");
+        try {
+            Integer id;
+            String name = nameField.getText();
+            String kind = kindField.getText();
+
+            try {
+                id = Integer.parseInt(idField.getText());
+            } catch (Exception e) {
+                id = -1;
+            }
+            session.getTransaction().begin();
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaUpdate<Animal> criteriaUpdate = builder.createCriteriaUpdate(Animal.class);
+            Root<Animal> root = criteriaUpdate.from(Animal.class);
+            criteriaUpdate.set("kind", kind);
+            criteriaUpdate.set("description", name);
+            criteriaUpdate.where(builder.equal(root.get("animal"), id));
+            session.createQuery(criteriaUpdate).executeUpdate();
+            infoLabel.setText("All right!");
+        } catch(Exception e) {
+            infoLabel.setText("Error: " + e.getMessage());
+            session.getTransaction().rollback();
+        } finally {
+            session.getTransaction().commit();
+        }
     }
 
     @FXML

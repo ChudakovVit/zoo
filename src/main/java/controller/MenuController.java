@@ -13,7 +13,7 @@ public class MenuController extends ViewController {
 
     @FXML
     protected void employeeManage(ActionEvent event) {
-//        GuiLauncher.getNavigation().load(ShowTeacherManager.URL_FXML).show();
+        GuiLauncher.getNavigation().load(PersonnelController.URL_FXML).show();
     }
 
     @FXML

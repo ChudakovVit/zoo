@@ -51,7 +51,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutY="505.0" prefHeight="23.0" prefWidth="800.0" style="&#10;" text="Если вы хотите изменить или удалить — введите только ID" textAlignment="CENTER" textFill="#979595" wrapText="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label alignment="CENTER" layoutY="505.0" prefHeight="23.0" prefWidth="800.0" style="&#10;" text="Если вы хотите удалить — введите только ID" textAlignment="CENTER" textFill="#979595" wrapText="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="18.0" />
                </font>
