@@ -22,11 +22,10 @@
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <TableView fx:id="mainTable" layoutX="73.0" layoutY="189.0" prefHeight="498.0" prefWidth="686.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="41.0">
+            <TableView fx:id="mainTable" layoutX="73.0" layoutY="189.0" prefHeight="498.0" prefWidth="224.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="503.0">
                <columns>
-                  <TableColumn fx:id="nameColumn" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="176.79998779296875" text="Название" />
-                  <TableColumn fx:id="kindColumn" maxWidth="570.4000396728516" minWidth="-Infinity" prefWidth="151.1999969482422" text="Род" />
-                  <TableColumn fx:id="feedColumn" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="176.79998779296875" text="Корм" />
+                  <TableColumn fx:id="nameColumn" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="104.0" text="Имя" />
+                  <TableColumn fx:id="kindColumn" maxWidth="570.4000396728516" minWidth="-Infinity" prefWidth="119.5" text="Род" />
                </columns>
             </TableView>
             <TextField fx:id="inputField" layoutX="73.0" layoutY="127.0" prefHeight="35.0" prefWidth="510.0" AnchorPane.rightAnchor="216.0" />
@@ -39,6 +38,19 @@
                <font>
                   <Font size="24.0" />
                </font></Button>
+            <TableView fx:id="feedTable" layoutX="297.0" layoutY="189.0" prefHeight="497.0" prefWidth="149.0">
+               <columns>
+                  <TableColumn fx:id="feedColumn" maxWidth="345.5999984741211" minWidth="-Infinity" prefWidth="94.0" text="Корм" />
+                  <TableColumn fx:id="feedQuantityColumn" maxWidth="365.0" minWidth="-Infinity" prefWidth="54.0" text="кг" />
+               </columns>
+            </TableView>
+            <TableView fx:id="homeTable" layoutX="446.0" layoutY="189.0" prefHeight="498.0" prefWidth="316.0">
+               <columns>
+                  <TableColumn fx:id="avgTempColumn" maxWidth="488.0" minWidth="-Infinity" prefWidth="74.65997314453125" text="Ср.темп." />
+                  <TableColumn fx:id="avgHumColumn" maxWidth="514.0" minWidth="-Infinity" prefWidth="89.40093994140625" text="Ср.влажн." />
+                  <TableColumn fx:id="homeColumn" maxWidth="514.0" minWidth="-Infinity" prefWidth="148.7293701171875" text="Родина" />
+               </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>

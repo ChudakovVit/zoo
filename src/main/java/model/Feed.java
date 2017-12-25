@@ -14,12 +14,21 @@ public class Feed {
     @Column
     private Integer quantity;
 
-    public int getFeedId() {
+    public Feed() {
+    }
+
+    public Feed(Integer feed, String name, Integer quantity) {
+        this.feed = feed;
+        this.name = name;
+        this.quantity = quantity;
+    }
+
+    public Integer getFeed() {
         return feed;
     }
 
-    public void setFeedId(int feedId) {
-        this.feed = feedId;
+    public void setFeed(Integer feed) {
+        this.feed = feed;
     }
 
     public String getName() {

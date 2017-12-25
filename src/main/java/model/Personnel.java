@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Table(name = "Personnel")
 public class Personnel {
     @Id
+    @GenericGenerator(name="kaugen" , strategy="increment")
+    @GeneratedValue(generator="kaugen")
     private Integer personnel;
     @Column(name = "full_name")
     private String fullName;
@@ -51,6 +53,6 @@ public class Personnel {
 
     @Override
     public String toString() {
-        return "Employee: Full Name='" + fullName + "', Phone Number='" + phoneNumber + "'; ";
+        return "Сотрудник №" + personnel + ": ФИО='" + fullName + "'";
     }
 }

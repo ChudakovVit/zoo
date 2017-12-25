@@ -1,6 +1,7 @@
 package model;
 
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -11,6 +12,8 @@ import javax.persistence.*;
 @Table(name = "AnimalPersonnel")
 public class AnimalPersonnel {
     @Id
+    @GenericGenerator(name="kaugen" , strategy="increment")
+    @GeneratedValue(generator="kaugen")
     private Integer animal_personnel;
     @Column
     private Integer animal;

@@ -9,17 +9,20 @@ import javax.persistence.criteria.CriteriaBuilder;
 public class Home {
     @Id
     private Integer home;
-    @Column
-    private Integer average_temp;
-    @Column
-    private Integer average_humidity;
+    @Column(name = "average_temp")
+    private Integer averageTemp;
+    @Column(name = "average_humidity")
+    private Integer averageHumidity;
     @Column
     private String description;
 
-    public Home(Integer home, Integer average_temp, Integer average_humidity, String description) {
+    public Home() {
+    }
+
+    public Home(Integer home, Integer averageTemp, Integer averageHumidity, String description) {
         this.home = home;
-        this.average_temp = average_temp;
-        this.average_humidity = average_humidity;
+        this.averageTemp = averageTemp;
+        this.averageHumidity = averageHumidity;
         this.description = description;
     }
 
@@ -31,20 +34,20 @@ public class Home {
         this.home = home;
     }
 
-    public Integer getAverage_temp() {
-        return average_temp;
+    public Integer getAverageTemp() {
+        return averageTemp;
     }
 
-    public void setAverage_temp(Integer average_temp) {
-        this.average_temp = average_temp;
+    public void setAverageTemp(Integer averageTemp) {
+        this.averageTemp = averageTemp;
     }
 
-    public Integer getAverage_humidity() {
-        return average_humidity;
+    public Integer getAverageHumidity() {
+        return averageHumidity;
     }
 
-    public void setAverage_humidity(Integer average_humidity) {
-        this.average_humidity = average_humidity;
+    public void setAverageHumidity(Integer averageHumidity) {
+        this.averageHumidity = averageHumidity;
     }
 
     public String getDescription() {
@@ -58,9 +61,9 @@ public class Home {
     @Override
     public String toString() {
         return "Animal Home: Average Temperature: " +
-                average_temp +
+                averageTemp +
                 "C, Average Humidity: " +
-                average_humidity + "%, " +
+                averageHumidity + "%, " +
                 " Quantity: " + description;
     }
 }

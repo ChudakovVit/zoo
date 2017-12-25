@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.scene.control.Alert;
+import model.*;
 import utils.HibernateUtil;
 import gui.GuiLauncher;
 import gui.ViewController;
@@ -7,12 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import model.Animal;
-import model.Feed;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
-
-import javax.swing.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class AnimalController extends ViewController {
@@ -20,52 +20,88 @@ public class AnimalController extends ViewController {
     public static String URL_FXML = "/views/AnimalManage.fxml";
 
     private Session session = HibernateUtil.getSessionFactory().openSession();
+
+    @FXML
+    TextField idField;
     @FXML
     TextField nameField;
     @FXML
     TextField kindField;
     @FXML
-    Label infoLabel;
-    @FXML
     TextField feedField;
     @FXML
     TextField feedQuantityField;
     @FXML
-    TextField departmentField;
+    TextField avTempField;
     @FXML
-    TextField idField;
+    TextField avHumField;
+    @FXML
+    TextField homeField;
+    @FXML
+    TextField idPersonnelField;
+    @FXML
+    Label infoLabel;
 
     @FXML
     protected void addAnimal(ActionEvent event) {
         try {
-            String kind = kindField.getText();
+            Integer id;
             String name = nameField.getText();
-            String feed = feedField.getText();
-            Integer feedQuantity = Integer.parseInt(feedQuantityField.getText());
-            if (!(kind.isEmpty() && name.isEmpty())) {
+            String kind = kindField.getText();
+            String feedName = feedField.getText();
+            Integer feedQuantity;
+            Integer avTemp;
+            Integer avHum;
+            String homeName = homeField.getText();
+            Integer idPersonnel;
+            try {
+                id = Integer.parseInt(idField.getText());
+                feedQuantity = Integer.parseInt(feedQuantityField.getText());
+                avTemp = Integer.parseInt(avTempField.getText());
+                avHum = Integer.parseInt(avHumField.getText());
+                idPersonnel = Integer.parseInt(idPersonnelField.getText());
+            } catch (Exception e) {
+                id = -1;
+                feedQuantity = -1;
+                avTemp = -1;
+                avHum = -1;
+                idPersonnel = -1;
+            }
+            if (!(id != -1 && name.isEmpty() && kind.isEmpty() && feedName.isEmpty()
+                && feedQuantity != -1 && avTemp != -1 && avHum != -1 && homeName.isEmpty() && idPersonnel != -1)) {
                 session.getTransaction().begin();
-//                Query query = session.createQuery("from Feed where name = :name ");
-//                query.setParameter("name", department);
-//                List<Feed> list = query.list();
-//                if (list.isEmpty()) {
-//                    infoLabel.setText("INFO: Not Found!");
-//                    session.getTransaction().commit();
-//                    return;
-//                }
-                Animal animal = new Animal();
-                animal.setKind(kind);
-                animal.setDescription(name);
-//                Animal.setPatronymic(patronymic);
-//                Animal.setDepartment_iddepartment(list.get(0).getIdDepartment());
-//                Animal.setPhoneNumber(phoneNumber);
+
+                CriteriaBuilder builder = session.getCriteriaBuilder();
+                CriteriaQuery<Animal> criteriaQuery = builder.createQuery(Animal.class);
+                Root<Animal> root = criteriaQuery.from(Animal.class);
+                criteriaQuery.select(root);
+                criteriaQuery.where(builder.equal(root.get("animal"), id));
+                List<Animal> list = session.createQuery(criteriaQuery).getResultList();
+
+                if (!list.isEmpty()) {
+                    infoLabel.setText("Already exist!");
+                    session.getTransaction().commit();
+                    return;
+                }
+                Animal animal = new Animal(id, id, id, kind, name);
                 session.save(animal);
+
+                Feed feed = new Feed(id, feedName, feedQuantity);
+                session.save(feed);
+
+                Home home = new Home(id, avTemp, avHum, homeName);
+                session.save(home);
+
+                AnimalPersonnel animalPersonnel = new AnimalPersonnel(id+idPersonnel, id, idPersonnel);
+                session.save(animalPersonnel);
+
                 session.getTransaction().commit();
-                infoLabel.setText("INFO: OK!");
+                infoLabel.setText("All right!");
             } else {
-                infoLabel.setText("ERROR: Empty input!");
+                infoLabel.setText("Wrong input!");
             }
         } catch(Exception e) {
-            infoLabel.setText("ERROR! " + e.getMessage());
+            infoLabel.setText("Error: " + e.getMessage());
             session.getTransaction().rollback();
         }
     }
@@ -75,16 +111,16 @@ public class AnimalController extends ViewController {
         try {
             String id = idField.getText();
             if (!id.isEmpty()) {
-                int id_Animal = Integer.parseInt(id);
+                int idAnimal = Integer.parseInt(id);
                 session.getTransaction().begin();
-                session.delete(session.get(Animal.class, id_Animal));
+                session.delete(session.get(Animal.class, idAnimal));
                 session.getTransaction().commit();
-                infoLabel.setText("INFO: OK!");
+                infoLabel.setText("All right!");
             } else {
-                infoLabel.setText("ERROR: Empty input!");
+                infoLabel.setText("Empty input!");
             }
         } catch(Exception e) {
-            infoLabel.setText("ERROR! " + e.getMessage());
+            infoLabel.setText("Error: " + e.getMessage());
             session.getTransaction().rollback();
         }
     }
@@ -131,29 +167,43 @@ public class AnimalController extends ViewController {
     }
 
     @FXML
-    protected void showDepartments(ActionEvent event) {
-        System.out.println("24iy3");
-//        session.getTransaction().begin();
-//        Query query = session.createQuery("from Department");
-//        List<Department> list = query.list();
-//        StringBuilder result = new StringBuilder("Department: ");
-//        for(Department department : list)
-//        {
-//            result.append(department.getIdDepartment() + "  ");
-//        }
-//        JOptionPane.showMessageDialog(null, result, "About", JOptionPane.INFORMATION_MESSAGE);
+    protected void showPersonnel(ActionEvent event) {
+        session.getTransaction().begin();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Personnel> criteriaQuery = builder.createQuery(Personnel.class);
+        Root<Personnel> root = criteriaQuery.from(Personnel.class);
+        criteriaQuery.select(root).orderBy(builder.asc(root.get("personnel")));
+        List<Personnel> list = session.createQuery(criteriaQuery).getResultList();
+        session.getTransaction().commit();
+        StringBuilder result = new StringBuilder();
+        for(Personnel personnel : list) {
+            result.append(personnel.toString() + "\n");
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Сотрудники:");
+        alert.setHeaderText(null);
+        alert.setContentText(result.toString());
+        alert.showAndWait();
     }
 
     @FXML
-    protected void showAnimals(ActionEvent event) {
+    protected void showAnimal(ActionEvent event) {
         session.getTransaction().begin();
-        Query query = session.createQuery("from Animal");
-        List<Animal> list = query.list();
-        StringBuilder result = new StringBuilder("Animal: ");
-        for(Animal Animal : list) {
-            result.append(Animal.getAnimal() + "  ");
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Animal> criteriaQuery = builder.createQuery(Animal.class);
+        Root<Animal> root = criteriaQuery.from(Animal.class);
+        criteriaQuery.select(root).orderBy(builder.asc(root.get("animal")));
+        List<Animal> list = session.createQuery(criteriaQuery).getResultList();
+        session.getTransaction().commit();
+        StringBuilder result = new StringBuilder();
+        for(Animal animal : list) {
+            result.append(animal.toString() + "\n");
         }
-        JOptionPane.showMessageDialog(null, result, "About", JOptionPane.INFORMATION_MESSAGE);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Животные:");
+        alert.setHeaderText(null);
+        alert.setContentText(result.toString());
+        alert.showAndWait();
     }
 
     @FXML
